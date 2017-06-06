@@ -1,3 +1,4 @@
+//Array of question objects
 var questions = [
 {
 	question: "Which hockey icon announced his retirement in 1999?",
@@ -38,7 +39,60 @@ var questions = [
 		inc3: "1999"
 	}
 },
-
+{
+	question:"The First sheep was successfully cloned in 1996, what was the sheeps name?",
+	answers: {
+		inc1: "Peggy",
+		cor: "Dolly",
+		inc2: "Donna",
+		inc3: "Polly"
+	}
+},
+{
+	question:"In what year was the seach engine Google founded?",
+	answers: {
+		inc1: "1997",
+		inc2: "1995",
+		cor: "1996",
+		inc3: "1998"
+	}
+},
+{
+	question:"How Many Oscars did the film Titatic win?",
+	answers:{
+		inc1: "12",
+		inc2: "10",
+		inc3: "9",
+		cor: "11"
+	}
+},
+{
+	question: "Who lit the Olympic torch at the opening ceremony in the 1996 summer Olympics?",
+	answers:{
+		inc1: "Michael Jordan",
+		cor: "Muhammad Ali",
+		inc2: "Carl Lewis",
+		inc3: "Ben Johnson"
+	}
+},
+{
+	question: "In Office Space, what do Peter and his friends take to a field and pummel with a baseball bat?",
+	answers:{
+		inc1: "A computer",
+		inc2: "A monitor",
+		cor: "A fax machine",
+		inc3: "A telephone"
+	}
+},
+{
+	question: "WHat does the United States government hire to save the world in Armageddon?",
+	answers:{
+		cor: "Offshore Oil Rig Workers",
+		inc1: "Auto Workers",
+		inc2: "Cowboys",
+		inc3: "Construction Workers"
+	}
+}
 ];
 
 var qCount = 0;
@@ -51,7 +105,7 @@ var unaswered = 0;
 $(document).ready(function(){
 $("#status").hide();
 $("#main").hide();
-$("#opeining").show()
+$("#opening").show()
 
 function beginRound(){
 	if(qCount < questions.length){
@@ -108,7 +162,7 @@ function displayResult(status){
 	}
 	else{
 		$("#status").html("<h1 class='text-center'>Hmm...That doesn't seem right....</h1");
-		$("#status").append("<h2 class='text-center'>The correct Answer was " + questions[qCount].answers.cor + "</h2>");
+		$("#status").append("<h2 class='text-center'>The correct answer was " + questions[qCount].answers.cor + "</h2>");
 		console.log("incorrect");
 		console.log("The correct Answer was " + questions[qCount].answers.cor);
 		incCount++;
@@ -132,12 +186,12 @@ $("#start").on("click", function(){
 	beginRound();
 });
 
+// Create click events for answer choices
 $(document.body).on("click", ".list-group-item", function() {
-
+		//if the id is cor then the answer is correct
 			if ($(this).attr("id") == "cor"){				
 				displayResult(1);
 			}
-
 			else{
 				displayResult(0);
 				//incorrect
